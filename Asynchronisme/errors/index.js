@@ -18,14 +18,33 @@
 // Gestion d'erreur avec methode "catch"
 // --
 
-const fs = require('fs').promises;
+// const fs = require('fs').promises;
 
-fs.readFile('file.txt', 'utf8')
-    .then(data => {
+// fs.readFile('file.txt', 'utf8')
+//     .then(data => {
+//         console.log(data);
+//     })
+//     .catch(err => {
+//         console.error('Erreur lors de la lecture du fichier:', err);
+//     });
+
+
+
+
+// Propagation des erreurs dans les Promises
+// --
+
+function readFile() {
+    return fs.readFile('file.txt', 'utf8');
+}
+
+async function main() {
+    try {
+        const data = await readFile();
         console.log(data);
-    })
-    .catch(err => {
-        console.error('Erreur lors de la lecture du fichier:', err);
-    });
+    } catch (err) {
+        console.error('Erreur dans main:', err);
+    }
+}
 
-
+main();
