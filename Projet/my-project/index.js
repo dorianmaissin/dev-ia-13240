@@ -6,7 +6,8 @@
 const express = require('express');
 const path = require('path');
 const ejs = require('ejs');
-
+const dotenv = require('dotenv')
+const {MongoClient} = require('mongodb')
 
 
 // Configuration de l'application
@@ -42,6 +43,39 @@ app.use('/', require('./routes/routes'));
 // Démarrer le serveur
 // --
 
+// Connect to mongo database
+// dotenv.config()
+
+// const config = {
+//     env: process.env['ENV'],
+//     port: process.env['PORT']
+// }
+
+
+
+// const uri = config.env;
+// const client = new MongoClient(uri);
+
+// async function run() {
+//   try {
+//     await client.connect();
+//     const db = client.db('sample_mflix');
+//     const collection = db.collection('movies');
+
+//     // Find the first document in the collection
+//     const first = await collection.findOne();
+//     console.log(first);
+//   } finally {
+//     // Close the database connection when finished or an error occurs
+//     await client.close();
+//   }
+// }
+
+// run().catch(console.error);
+
+
 app.listen(PORT, () => {
     console.log(`Serveur en cours d'exécution sur  http://localhost:${PORT}`);
 });
+
+
